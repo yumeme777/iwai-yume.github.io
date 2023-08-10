@@ -744,11 +744,6 @@ body {
   margin-top: 80px;
 }
 
-.top_about_btn:hover {
-  margin-top: 80px;
-  box-shadow: 0 0 10px var(--white-color02);
-}
-
 .top_about_link {
   background-color: var(--white-color02);
   color: var(--black-color);
