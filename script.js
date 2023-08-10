@@ -23,6 +23,7 @@ function scroll_event() {
   }
 }
 
+// 小さい画面でもいいかんじになるように
 !(function () {
   const viewport = document.querySelector('meta[name="viewport"]');
   function switchViewport() {
@@ -49,12 +50,6 @@ hamburger.addEventListener("click", () => {
   nav.classList.toggle("is-active");
   body.classList.toggle("is-active");
 
-  nav.addEventListener("click", () => {
-    hamburger.classList.toggle("is-active");
-    nav.classList.toggle("is-active");
-    body.classList.toggle("nis-active");
-  });
-
   navItems.forEach((navItem) => {
     navItem.addEventListener("click", () => {
       hamburger.classList.remove("is-active");
@@ -65,30 +60,57 @@ hamburger.addEventListener("click", () => {
   });
 });
 
-// 左から右
-// 距離を測りたい要素を全て取得
-const scrollAppears = document.querySelectorAll(".scroll_appear");
+// フェードイン
+let els = document.querySelectorAll(".js-fadeIn");
 
-// 距離を表示させるspan要素を全て取得
-const distance = document.querySelectorAll(".distance");
+els.forEach(function (fadeIn) {
+  let windowHeight = window.innerHeight;
 
-// 画面（ブラウザ）の高さを取得
-const windowHeight = window.innerHeight;
+  window.addEventListener("scroll", function () {
+    let offset = fadeIn.getBoundingClientRect().top;
+    let scroll = window.scrollY;
 
-for ( let index = 0; index < scrollAppears.length; index++ ) {
-    // body要素の上端から要素までの距離をoffsetTopで測り、elementDistanceに格納
-    const elementDistance = scrollAppears[index].offsetTop;
+    if (scroll > offset - windowHeight + 150) {
+      fadeIn.classList.add("is-scrollIn");
+    }
+  });
+});
 
-    // span要素のテキストに距離を代入
-    distance[index].textContent = elementDistance;
+// ふわっとでる
+window.addEventListener("scroll", function () {
+  // アニメーションを実行したいエレメントを取得
+  const elements = document.getElementsByClassName("js_animateElement");
 
-    // スクロールイベントの設定
-    window.addEventListener("scroll", () => {
-        // 現在の縦方向のスクロール位置を変数 y に格納
-        let y = window.scrollY;
-        // offsetTopの数値からブラウザの高さ÷2を引いた値に達したら"active"のclassを追加
-        if ( y >= elementDistance - ( windowHeight / 2  ) ) {
-            scrollAppears[index].classList.add("active");
-        }
-    });
+  // 複数のエレメントに対して、アニメーションを実行する
+  Array.prototype.forEach.call(elements, function (element) {
+    // ウィンドウの上端とエレメントの上端の距離を取得
+    const elementTop = element.getBoundingClientRect().top;
+    const windowHeight = window.innerHeight;
+
+    // アニメーションの条件をチェック
+    if (elementTop - windowHeight <= 0) {
+      // アニメーションを実行するためのコードをここに記述
+      element.classList.add("animated");
+    }
+  });
+});
+
+// 左から右に出る
+let DT = document.getElementsByClassName("m_figure_term");
+let DD = document.getElementsByClassName("m_figure_desc");
+
+if (DT !== null) {
+  window.addEventListener("scroll", function () {
+    const windowHeight = window.innerHeight;
+    const scroll = document.documentElement.scrollTop;
+
+    for (let i = 0; i < DT.length; i++) {
+      const PositionTop = DT[i].getBoundingClientRect().top + scroll;
+      if (scroll > PositionTop - windowHeight + 250) {
+        DT[i].classList.add("is-fadein");
+        DD[i].classList.add("is-fadein");
+      }
+    }
+  });
 }
+
