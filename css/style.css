@@ -439,7 +439,7 @@ body {
   background-color: var(--white-color);
   position: absolute;
   top: 50%;
-  right: 12px;
+  right: 13px;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 .m_page-top_btn::after {
@@ -449,7 +449,7 @@ body {
   background-color: var(--white-color);
   position: absolute;
   top: 50%;
-  left: 23px;
+  left: 24px;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
