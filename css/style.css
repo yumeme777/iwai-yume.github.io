@@ -119,10 +119,6 @@ body {
   font-weight: bold;
 }
 
-.l_header-nav_item:hover {
-  opacity: 0.7;
-}
-
 .l_header-nav_link {
   width: 100%;
 }
@@ -141,6 +137,9 @@ body {
     transform: translate(0, 0);
     flex-direction: row;
     gap: 24px;
+  }
+  .l_header-nav_item:hover {
+    opacity: 0.7;
   }
 }
 
@@ -247,14 +246,14 @@ body {
 .js_nav {
   pointer-events: none;
   transform: translateX(100vw);
-  transition: all 1s linear;
+  transition: 0.5s ease-out;
 }
 
 .js_nav.is-active {
   opacity: 1;
   pointer-events: inherit;
   transform: translateX(0);
-  transition: all 1s linear;
+  transition: 0.5s ease-out;
 }
 
 @media screen and (min-width: 1080px) {
@@ -273,7 +272,7 @@ body {
 .js_hamburger.is-active .m_hamburger-bar:first-child {
   top: 50%;
   transform: translate(-50%, 0) rotate(45deg);
-  transition: all 1s linear;
+  transition: 0.5s ease-out;
 }
 
 .js_hamburger.is-active .m_hamburger-bar:nth-child(2) {
@@ -283,7 +282,7 @@ body {
 .js_hamburger.is-active .m_hamburger-bar:last-child {
   top: 50%;
   transform: translate(-50%, 0) rotate(-45deg);
-  transition: all 1s linear;
+  transition: 0.5s ease-out;
 }
 
 /* fade-in */
@@ -439,7 +438,7 @@ body {
   background-color: var(--white-color);
   position: absolute;
   top: 50%;
-  right: 13px;
+  right: 12px;
   transform: translate(-50%, -50%) rotate(45deg);
 }
 .m_page-top_btn::after {
@@ -449,7 +448,7 @@ body {
   background-color: var(--white-color);
   position: absolute;
   top: 50%;
-  left: 24px;
+  left: 23px;
   transform: translate(-50%, -50%) rotate(-45deg);
 }
 
@@ -480,10 +479,6 @@ body {
   position: relative;
   margin-right: auto;
   margin-left: auto;
-}
-
-.m_btn:hover {
-  transform: scale(110%);
 }
 
 .m_btn::before {
@@ -517,6 +512,12 @@ body {
   background-color: var(--accent-color);
   color: var(--white-color02);
   box-shadow: 0 0 10px var(--black-color02);
+}
+
+@media screen and (min-width: 1080px) {
+  .m_btn:hover {
+    transform: scale(110%);
+  }
 }
 /* ----------------------------- */
 /* ---------- utility ---------- */
@@ -882,10 +883,6 @@ body {
   box-shadow: 0 0 10px var(--black-color02);
 }
 
-.top_works_thumb:hover {
-  transform: scale(110%);
-}
-
 .top_works_thumb::before {
   content: "";
   width: 100%;
@@ -940,6 +937,10 @@ body {
   .top_works_wrapper:not(:nth-child(1)) {
     margin-top: 0px;
   }
+
+  .top_works_thumb:hover {
+    transform: scale(110%);
+  }
 }
 
 /* ------------------------------ */
@@ -974,10 +975,6 @@ body {
   width: 80px;
 }
 
-.top_contact_sns:hover {
-  transform: scale(110%);
-}
-
 .top_contact_sns-link {
   width: 100%;
 }
@@ -999,6 +996,10 @@ body {
   .top_contact_sns {
     margin: 0;
     width: 250px;
+  }
+
+  .top_contact_sns:hover {
+    transform: scale(110%);
   }
 }
 
