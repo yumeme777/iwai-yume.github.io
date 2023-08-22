@@ -1,6 +1,50 @@
-// IE、Safari対応
-// smoothscroll.js読み込み
-// https://github.com/iamdustan/smoothscroll
+// ローディング
+ const loading = document.querySelector(".loading");
+ const spinner = document.querySelector(".spinner");
+ const loadingScreen = document.querySelector(".loading-screen");
+
+window.addEventListener('load', () => {
+ loading.animate(
+  {
+    opacity:[1,0],
+    visibility:"hidden",
+  },
+  {
+    duration:2000,
+    delay:1200,
+    easing:'ease',
+    fill:'forwards'
+  }
+ );
+// ローディング中
+loadingScreen.animate(
+  {
+    translate:['0 100vh','0 0','0 -100vh']
+},{
+  duration:2000,
+  delay:800,
+  easing:'ease',
+  fill:'forwards',
+}
+);
+// ローディングアニメ
+spinner.animate([
+  {
+    opacity: 1,
+    offset: 0.8,
+  },
+  {
+    opacity: 0,
+    offset: 1,
+  },
+],
+{
+  duration:1200,
+  easing:'ease',
+  fill:'forwards',
+}
+);
+});
 
 // セレクタ名（.pagetop）に一致する要素を取得
 const pagetop_btn = document.querySelector(".m_page-top_btn");
@@ -114,3 +158,12 @@ if (DT !== null) {
   });
 }
 
+// 高さ調整の関数
+function adjustHeight() {
+  let vh = window.innerHeight * 0.01;
+  document.documentElement.style.setProperty("--vh", `${vh}px`);
+}
+
+// 初回実行とリサイズ時に高さ調整関数を呼ぶ
+window.addEventListener("DOMContentLoaded", adjustHeight);
+window.addEventListener("resize", adjustHeight);
